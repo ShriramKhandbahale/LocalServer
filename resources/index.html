@@ -1,110 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LocalServer | The Sudoers Club</title>
-    <style>
-      @font-face {
-        font-family: "San Francisco", sans-serif;
 
-        font-weight: 400;
-        src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LocalServer | The Sudoers Club</title>
+  <style>
+    @font-face {
+      font-family: "San Francisco", sans-serif;
 
-      body {
-        background-color: rgb(26, 26, 26);
-        font-family: "San Francisco", sans-serif;
-      }
+      font-weight: 400;
+      src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+    }
 
-      .container {
-        height: 96vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-      }
+    body {
+      background-color: rgb(26, 26, 26);
+      font-family: "San Francisco", sans-serif;
+    }
 
-      #download {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
+    .container {
+      height: 85vh;
+      display: flex;
+      /* flex-direction: column; */
+      align-items: center;
+      justify-content: center;
+      margin: 4rem 0;
+      margin-bottom: 0;
+    }
 
-      #download a {
+    .file_data {
+      height: 100%;
+      background-color: rgb(43, 43, 43);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      margin: 0 3rem;
+      width: 40%;
+
+    }
+
+    .download {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 60%;
+      margin: 0 3rem;
+
+    }
+
+    .file_data_small {
+
+      height: 100%;
+      background-color: rgb(43, 43, 43);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      margin: 0 3rem;
+      width: 40%;
+      display: none;
+    }
+
+    .content {
+      min-height: 15rem;
+      height: auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(43, 43, 43);
+      padding: 2rem 0;
+      border-radius: 5px;
+      font-size: 1.3rem;
+      box-shadow: inset 5px 5px 10px rgb(0 0 0 / 15%);
+      margin-bottom: 5rem;
+    }
+
+    .container p {
+      padding: 0 3rem;
+    }
+
+    #download {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #download a {
+      margin: 1rem;
+      background-color: rgb(46, 123, 196);
+      color: white;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border-radius: 0.2rem;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: all 0.3s ease 0s;
+    }
+
+    #download a:hover {
+      background-color: rgb(37, 106, 172);
+    }
+
+    #file {
+      width: 100%;
+      padding-left: 25%;
+    }
+
+
+    @media only screen and (max-width: 1000px) {
+      .download {
         margin: 1rem;
-        background-color: rgb(46, 123, 196);
-        color: white;
-        font-weight: bold;
-        padding: 15%;
-        border-radius: 0.5rem;
-        text-decoration: none;
-        cursor: pointer;
-        font-size: 1.5rem;
-        transition: all 0.3s ease 0s;
+        margin-left: 2rem;
       }
 
-      #download a:hover {
-        background-color: rgb(37, 106, 172);
+      .file_data {
+        width: 20%;
+      }
+
+
+    }
+
+    @media only screen and (max-width: 800px) {
+      .file_data {
+        display: none;
+
+      }
+
+      .file_data_small {
+        display: block;
+        margin-bottom: 3rem;
+        width: 120%;
+
+      }
+
+      #file {
+        padding: 10%;
       }
 
       .content {
-        height: 70%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgb(43, 43, 43);
-        padding: 8% 0;
-        height: 30%;
+        margin-bottom: 1.5rem;
+        width: 135%;
+      }
+
+      .download{
+        margin-left: 1rem;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      .file_data_small{
+        width: 110%;
+      }
+      .content {
+        font-size: 1rem;
+        height: auto;
+      }
+    }
+
+    @media only screen and (max-width: 270px) {
+      #download a {
         border-radius: 5px;
-        font-size: 1.3rem;
-        box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.15);
       }
 
-      .container p {
-        padding: 0 20%;
+      .content {
+        padding: 15% 0;
+        font-size: 1rem;
       }
+    }
+  </style>
+</head>
 
-      @media only screen and (max-width: 600px) {
-        #download a {
-          font-size: 1.1rem;
-          border-radius: 5px;
-          padding: 12%;
-        }
+<body>
+  <div class="container">
 
-        .content {
-          font-size: 1rem;
-          height: auto;
-        }
-      }
-
-      @media only screen and (max-width: 270px) {
-        #download a {
-          border-radius: 5px;
-        }
-
-        .content {
-          padding: 15% 0;
-          font-size: 1rem;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="content">
+    <div class=" download">
+      <div class=" content">
         <p style="color: white">Custom message</p>
-        <iframe src=".files.txt" frameborder="0" height="80%""></iframe>
       </div>
-      <div class="file_fhello worlde">
+      <div class="file_data_small">
+        <iframe id="file" style="color:rgb(80, 19, 19);" src=".files.txt" frameborder="0" height="auto"></iframe>
       </div>
       <div id="download">
         <a href="server/LocalServer_file.zip" download="">Download</a>
       </div>
     </div>
-  </body>
+    <div class="file_data">
+      <iframe id="file" style="color:rgb(80, 19, 19);" src=".files.txt" frameborder="0" height="auto"></iframe>
+    </div>
+  </div>
+</body>
+
 </html>
