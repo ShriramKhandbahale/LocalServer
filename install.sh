@@ -13,6 +13,7 @@ touch resources/.current_content.txt && echo "Custom message" > resources/.curre
 g++ resources/message_input.cpp -o resources/.message_input
 chmod +x resources/.message_input host.sh
 mv resources .resources -f
+mkdir -p .resources/.LocalServer/
 rm server/drag_your_files_here.txt
 rm README.md
 

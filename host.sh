@@ -65,6 +65,7 @@ while [ $invalidOption ]; do
                 printf '%s\n' "$line"
                 sleep 0.05
             done
+            mv LocalServer_file.zip ../.resources/.LocalServer/
             echo -e "-------------------\n" && sleep 2
 
             cd ../.resources/

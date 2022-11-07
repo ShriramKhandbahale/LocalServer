@@ -146,15 +146,16 @@
         width: 135%;
       }
 
-      .download{
+      .download {
         margin-left: 1rem;
       }
     }
 
     @media only screen and (max-width: 500px) {
-      .file_data_small{
+      .file_data_small {
         width: 110%;
       }
+
       .content {
         font-size: 1rem;
         height: auto;
@@ -182,14 +183,14 @@
         <p style="color: white">Custom message</p>
       </div>
       <div class="file_data_small">
-        <iframe id="file" style="color:rgb(255, 255, 255);" src=".files.txt" frameborder="0" height="auto"></iframe>
+        <iframe id="file" src=".files.txt" frameborder="0" height="auto"></iframe>
       </div>
       <div id="download">
-        <a href="server/LocalServer_file.zip" download="">Download</a>
+        <a href=".LocalServer/LocalServer_file.zip" download="LocalServer_file.zip">Download</a>
       </div>
     </div>
     <div class="file_data">
-      <iframe id="file" style="color:rgb(255, 255, 255);" src=".files.txt" frameborder="0" height="auto"></iframe>
+      <iframe id="file" src=".files.txt" frameborder="0" height="auto"></iframe>
     </div>
   </div>
 </body>
