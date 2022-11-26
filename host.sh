@@ -1,6 +1,11 @@
 #! /bin/bash
 
+#variables
 invalidOption=false
+YELLOW='\033[1;33m'
+RED='\033[1;31m'
+WHITE='\033[1;37m'
+NC='\033[0m' # No Color
 
 while [ $invalidOption ]; do
     clear
@@ -12,7 +17,7 @@ while [ $invalidOption ]; do
     case $CHOICE in
 
     1)
-        echo -e "\nN: Add your website files to the 'server' directory\nwith index.html being in the root (i.e the server directory)\n"
+        echo -e "\n${YELLOW}N:${NC} Add your website files to the 'server' directory\nwith index.html being in the root (i.e the server directory)\n"
         read -p "Continue [Y] : "
 
         if [[ -f server/index.html ]]; then
@@ -35,10 +40,10 @@ while [ $invalidOption ]; do
 
             wget -q --spider http://google.com
             if [[ $LINK = h* && $? -eq 0 ]]; then
-                echo -e "Sharable link :" "$(cat .resources/.link.txt)" && sleep 2
-                echo -en "\nN: Use command \"killall host.sh\" to terminate the server | "
+                echo -e "${WHITE}Sharable link :${NC}" "$(cat .resources/.link.txt)" && sleep 2
+                echo -en "\n${YELLOW}N:${NC} Use command \"killall host.sh\" to terminate the server | "
             else
-                echo -e "\nError: Something went wrong."
+                echo -e "\n${RED}Error:${NC} Something went wrong."
                 echo -e "Please check your internet connection or try again\n" && sleep 5
                 exit 1
             fi
@@ -48,18 +53,18 @@ while [ $invalidOption ]; do
 
             read
         else
-            sleep 2 && echo -e "\nError: unable to create server"
+            sleep 2 && echo -e "\n${RED}Error:${NC} unable to create server"
             sleep 2 && echo -e "\nThe 'server' directory is empty or index.html is not\nin the root (i.e the server directory)\n" && sleep 5
         fi
         ;;
 
     2)
-        echo -e "\nN: Add all the files you wnat to host to the 'server' directory"
+        echo -e "\n${YELLOW}N:${NC} Add all the files you wnat to host to the 'server' directory"
         read -p "Continue [Y] : "
 
         if [ "$(ls server)" ]; then
-            cd server && ls --block-size=K -s >../.resources/.files.txt
-            sed -i -e '/LocalServer_file.zip/d' ../.resources/.files.txt
+            cd server && ls --block-size=K -s >../.resources/.files.html
+            sed -i -e '/LocalServer_file.zip/d' ../.resources/.files.html
             echo -e "\n-------------------"
             zip LocalServer_file.zip * -r | while read -r line; do
                 printf '%s\n' "$line"
@@ -89,10 +94,10 @@ while [ $invalidOption ]; do
 
             wget -q --spider http://google.com
             if [[ $LINK = h* && $? -eq 0 ]]; then
-                echo -e "Sharable link :" "$(cat .resources/.link.txt)" && sleep 2
-                echo -en "\nN: Use command \"killall host.sh\" to terminate the server | "
+                echo -e "${WHITE}Sharable link :${NC}" "$(cat .resources/.link.txt)" && sleep 2
+                echo -en "\n${YELLOW}N:${NC} Use command \"killall host.sh\" to terminate the server | "
             else
-                echo -e "\nError: Something went wrong."
+                echo -e "\n${RED}Error:${NC} Something went wrong."
                 echo -e "Please check your internet connection or try again\n" && sleep 5
                 exit 1
             fi
@@ -101,7 +106,7 @@ while [ $invalidOption ]; do
             >.resources/.link.txt
             read
         else
-            echo -e "\nError: unable to create server"
+            echo -e "\n${RED}Error:${NC} unable to create server"
             echo -e "The 'server' directory is empty.\n" && sleep 3
         fi
         ;;
