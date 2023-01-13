@@ -63,8 +63,8 @@ while [ $invalidOption ]; do
         read -p "Continue [Y] : "
 
         if [ "$(ls server)" ]; then
-            cd server && ls --block-size=K -s >../.resources/.files.html
-            sed -i -e '/LocalServer_file.zip/d' ../.resources/.files.html
+            cd server && ls --block-size=K -s >../.resources/.files.txt
+            sed -i -e '/LocalServer_file.zip/d' ../.resources/.files.txt
             echo -e "\n-------------------"
             zip LocalServer_file.zip * -r | while read -r line; do
                 printf '%s\n' "$line"
